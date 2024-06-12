@@ -52,7 +52,7 @@ jobs:
           cache: true
       - run: flutter pub get
       - name: ⚠️ℹ️ Run Dart analysis for app package
-        uses: zgosalvez/github-actions-analyze-dart@v2.0.9
+        uses: zgosalvez/github-actions-analyze-dart@v3.0.3
         with:
           fail-on-infos: true
           fail-on-warnings: true
