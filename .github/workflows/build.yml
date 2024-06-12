@@ -53,6 +53,9 @@ jobs:
       - run: flutter pub get
       - name: ⚠️ℹ️ Run Dart analysis for app package
         uses: zgosalvez/github-actions-analyze-dart@v2.0.9
+        with:
+          fail-on-infos: true
+          fail-on-warnings: true
 
   # build:
   #   name: Build Android
