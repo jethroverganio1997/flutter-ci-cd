@@ -21,15 +21,6 @@ on:
       - '.git/'
       - '.vscode/'
 
-  push:
-    branches:
-      - 'main'
-    paths-ignore:
-      - '**.md'
-      - 'doc/**'
-      - '.git/'
-      - '.vscode/'
-
 jobs:
   testAndCoverage:
     name: 🧪 Test
