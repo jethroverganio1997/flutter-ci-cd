@@ -26,7 +26,7 @@ jobs:
           cache: true
 
       # Install dependencies for all packages
-      - name: ⚙️ Install dependencies for all packages
+      - name: ⚙️ Install and Generate dependencies
         run: |
           flutter pub get
           flutter pub run build_runner build --delete-conflicting-outputs
@@ -34,14 +34,7 @@ jobs:
       # Run tests with coverage
       - name: 🧪 Run tests with coverage
         run: |
-          flutter test --coverage
-
-      # Generate HTML report
-      - name: Install lcov-to-json
-        run: npm install -g lcov-to-json
-
-      - name: Convert lcov to JSON
-        run: lcov-to-json coverage/lcov.info > coverage/coverage_test_report.json
+          flutter test --machine --coverage > test_reports/coverage_test_report.json
 
       # Publish test results
       - name: 🧪✅❌ Publish test results
@@ -49,7 +42,7 @@ jobs:
         uses: dorny/test-reporter@v1.9.1
         with:
           name: '🧪📊 Unit tests report'
-          path: test_reports/*_test_report.json
+          path: test_reports/coverage_test_report.json
           reporter: 'flutter-json'
           max-annotations: '50'
           token: ${{ secrets.GITHUB_TOKEN }}
