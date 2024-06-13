@@ -54,12 +54,17 @@ jobs:
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: "e75dd64e95cf4b4603c83cddd1ad76c2"
-          filename: "passing-tests-badge.json"
-          label: 'Tests'
-          message: '${{ steps.compute_test_results.outputs.passed }} passed, ${{ steps.compute_test_results.outputs.failed }} failed'
-          namedLogo: "TestCafe"
-          labelColor: 'lightgrey'
-          color: ${{ steps.compute_test_results.outputs.failed == 0 && 'brightgreen' ||  'red' }}
+          host: https://api.github.com/gists/
+          filename: test.json # Use test.svg if you want to use the SVG mode.
+          label: Hello
+          message: World
+          color: orange
+          # filename: "passing-tests-badge.json"
+          # label: 'Tests'
+          # namedLogo: "TestCafe"
+          # labelColor: 'lightgrey'
+          # message: '${{ steps.compute_test_results.outputs.passed }} passed, ${{ steps.compute_test_results.outputs.failed }} failed'
+          # color: ${{ steps.compute_test_results.outputs.failed == 0 && 'brightgreen' ||  'red' }}
 
       # Publish coverage report
       - name: 🧪📊 Publish coverage report
