@@ -36,6 +36,11 @@ jobs:
         run: |
           flutter test --machine --coverage > test_reports/coverage_test_report.json
 
+      # Generate HTML coverage report
+      - name: 🧪📊 Generate HTML coverage report
+        run: |
+          genhtml coverage/lcov.info -o coverage/html
+
       # Publish test results
       - name: 🧪✅❌ Publish test results
         id: compute_test_results
@@ -49,7 +54,7 @@ jobs:
      
       # Publish coverage report
       - name: 🧪📊 Publish coverage report
-        if: github.event_name == 'push'
+        if: github.event_name == 'pull_request'
         uses: romeovs/lcov-reporter-action@v0.4.0
         with:
           lcov-file: coverage/lcov.info
@@ -60,9 +65,8 @@ jobs:
       - name: 🥤 Extract test coverage percentage
         if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
         run: |
-          grep -o '.*headerCovTableEntryLo.*' coverage_report/index.html | sed -E  's/.*>(.*) %<.*/\1/' > coverage_percentage.txt
-          percentage=$(cat coverage_percentage.txt)
-          echo "Coverage percentage: $percentage"
-          echo "coverage_percentage=$percentage" >> $GITHUB_ENV
+          coverage=$(grep -o 'class="headerCovTableEntryLo">[^<]*<' coverage/html/index.html | grep -o '[0-9.]*' | head -n 1)
+          echo "Coverage percentage: $coverage"
+          echo "coverage_percentage=$coverage" >> $GITHUB_ENV
 
   
