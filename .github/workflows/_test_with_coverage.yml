@@ -52,7 +52,7 @@ jobs:
         if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
-          auth: ${{ secrets.GIST_SECRET }}
+          auth: ${{ secrets.GIST_SECRETS }}
           gistID: "e75dd64e95cf4b4603c83cddd1ad76c2"
           filename: "passing-tests-badge.json"
           label: 'Tests'
@@ -84,7 +84,7 @@ jobs:
         if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
-          auth: ${{ secrets.GIST_SECRET }}
+          auth: ${{ secrets.GIST_SECRETS }}
           gistID: "e75dd64e95cf4b4603c83cddd1ad76c2"
           filename: "test-coverage-badge.json"
           label: 'Test coverage'
