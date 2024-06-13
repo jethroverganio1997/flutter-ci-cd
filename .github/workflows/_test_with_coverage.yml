@@ -50,10 +50,10 @@ jobs:
       # Create passing test results badge
       - name: 🪪 Create passing test results badge
         if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
-        uses: schneegans/dynamic-badges-action@v1.7.0
+        uses: schneegans/dynamic-badges-action@v1.6.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: "e75dd64e95cf4b4603c83cddd1ad76c2"
+          gistID: "fd1f7fc0bce2243e015a672c1da72202"
           host: https://api.github.com/gists/
           filename: test.json # Use test.svg if you want to use the SVG mode.
           label: Hello
@@ -90,7 +90,7 @@ jobs:
         uses: schneegans/dynamic-badges-action@v1.7.0
         with:
           auth: ${{ secrets.GIST_SECRET }}
-          gistID: "e75dd64e95cf4b4603c83cddd1ad76c2"
+          gistID: "fd1f7fc0bce2243e015a672c1da72202"
           filename: "test-coverage-badge.json"
           label: 'Test coverage'
           message: '${{ env.coverage_percentage }} %'
