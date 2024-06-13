@@ -36,6 +36,13 @@ jobs:
         run: |
           flutter test --coverage
 
+      # Generate HTML report
+      - name: Install lcov-to-json
+        run: npm install -g lcov-to-json
+
+      - name: Convert lcov to JSON
+        run: lcov-to-json coverage/lcov.info > coverage/coverage_test_report.json
+
       # Publish test results
       - name: 🧪✅❌ Publish test results
         id: compute_test_results
