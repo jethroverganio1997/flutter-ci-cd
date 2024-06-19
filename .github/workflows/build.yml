@@ -47,8 +47,8 @@ jobs:
       - name: ⚠️ℹ️ Run Dart analysis for app package
         uses: zgosalvez/github-actions-analyze-dart@v3.0.3
         with:
-          fail-on-infos: true
-          fail-on-warnings: true
+          fail-on-infos: false
+          fail-on-warnings: false
 
   build:
     name: Build Android

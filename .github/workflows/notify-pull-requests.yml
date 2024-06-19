@@ -1,17 +1,19 @@
 name: 🔔 PR Notifier
 
-on:
-  pull_request:
-    types:
-      - closed
-      - review_requested
-    branches:
-      - 'main'
-  pull_request_review:
-    types:
-      - submitted
-    branches:
-      - 'main'
+on: workflow_dispatch
+
+# on:
+#   pull_request:
+#     types:
+#       - closed
+#       - review_requested
+#     branches:
+#       - 'main'
+#   pull_request_review:
+#     types:
+#       - submitted
+#     branches:
+#       - 'main'
 
 jobs:
   notifyPREvent:
