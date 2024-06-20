@@ -1,4 +1,4 @@
-# 2.0.0 (2024-06-20)
+# 3.0.0 (2024-06-20)
 
 
 ### Bug Fixes
@@ -9,6 +9,7 @@
 * files missing ([ea642f4](https://github.com/jethroverganio1997/flutter-ci-cd/commit/ea642f4760eb05cc22a48828ed04b1df9ddace99))
 * **remitter:** fix create remitter ([2251c24](https://github.com/jethroverganio1997/flutter-ci-cd/commit/2251c243c38fe1b8c9e2e7b99dba3525dced4d2e))
 * resolve issue with user profile update ([aa7b8a1](https://github.com/jethroverganio1997/flutter-ci-cd/commit/aa7b8a1dc4a2e0d5817100fc826d9f9eda6e0fe2))
+* shit ([5db3b79](https://github.com/jethroverganio1997/flutter-ci-cd/commit/5db3b7903c2fab87a2a8cc56ed74cad95c6215b6))
 
 
 ### Features
