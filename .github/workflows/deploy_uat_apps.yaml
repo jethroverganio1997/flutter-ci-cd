@@ -54,7 +54,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@v5
         with:
           github-token: ${{ secrets.RELEASE_AUTOMATION_PAT }}
-          tag-prefix: 'release/uat/'
+          skip-tag: true
 
       - name: 📝 Calculate complete UAT version for next version
         id: get_new_pubspec_version
@@ -63,14 +63,14 @@ jobs:
           next_pubspec_version=$(./scripts/semver.sh "$last_uat_release" "${{ steps.changelog.outputs.version }}")
           echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
 
-      - name: 🏷️ Use new pubspec version
-        run: echo "The next pubspec version is ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-      # - name: 🏷️✍️ Create new UAT release tag
-      #   uses: rickstaa/action-create-tag@v1
-      #   with:
-      #     tag: "release/uat/${{ steps.changelog.outputs.version }}"
-      #     message: "UAT release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-      #     github_token: ${{ secrets.RELEASE_AUTOMATION_PAT }}
+      # - name: 🏷️ Use new pubspec version
+      #   run: echo "The next pubspec version is ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+      - name: 🏷️✍️ Create new UAT release tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "release/uat/${{ steps.changelog.outputs.version }}"
+          message: "UAT release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          github_token: ${{ secrets.RELEASE_AUTOMATION_PAT }}
 
       # - name: Get changelog for this release 
       #   id: changelog 
@@ -83,7 +83,7 @@ jobs:
         uses: ncipollo/release-action@v1 
         with: 
           token: ${{ secrets.GITHUB_TOKEN }} 
-          tag: ${{ steps.changelog.outputs.tag  }}
+          tag: "release/uat/${{ steps.changelog.outputs.version }}"
           name: "v${{ steps.changelog.outputs.version  }}"
           body: ${{  steps.changelog.outputs.clean_changelog }}
           makeLatest: true
