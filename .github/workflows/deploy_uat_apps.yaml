@@ -72,14 +72,14 @@ jobs:
           CHANGELOG=$(awk "/^## \[$VERSION_TAG\]/,/^## \[/" CHANGELOG.md | sed '$d') 
           echo "$CHANGELOG" > RELEASE_CHANGELOG.md 
           
-        - name: Create GitHub Release
-          uses: ncipollo/release-action@v1 
-          with: 
-            token: ${{ secrets.GITHUB_TOKEN }} 
-            name: Release${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
-            tag: ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
-            draft: false 
-            prerelease: false
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1 
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }} 
+          name: Release${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+          tag: ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+          draft: false 
+          prerelease: false
   
   
   
