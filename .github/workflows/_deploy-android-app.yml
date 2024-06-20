@@ -34,25 +34,34 @@ jobs:
       url: ${{ inputs.environment-url }}
     steps:
       - name: ⬇️ Checkout repository
+        # This step checks out the repository code for the workflow to run on.
         uses: actions/checkout@v4
+
       - name: ⚙️ Setup Java
+        # This step sets up Java for the workflow using the 'zulu' distribution and version 12.x.
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: "12.x"
           cache: 'gradle'
         id: java
+
       - name: ⚙️ Setup Flutter
+        # This step sets up Flutter for the workflow using the 'stable' channel.
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           cache: true
         id: flutter
+
       - name: 🔐 Retrieve base64 keystore and decode it to a file
+        # This step retrieves the base64 encoded keystore file from secrets, decodes it, and saves it as 'android-keystore.jks'.
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_FILE_BASE64 }}
         run: echo $KEYSTORE_BASE64 | base64 --decode > "${{ github.workspace }}/android-keystore.jks"
+
       - name: 📝🔐 Create keystore.properties file
+        # This step creates a keystore.properties file with the necessary information for signing the Android app.
         env:
           KEYSTORE_PROPERTIES_PATH: ${{ github.workspace }}/app/android/keystore.properties
         run: |
@@ -60,14 +69,22 @@ jobs:
           echo '${{ inputs.flavor }}KeyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}' >> $KEYSTORE_PROPERTIES_PATH
           echo '${{ inputs.flavor }}StorePassword=${{ secrets.KEYSTORE_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
           echo '${{ inputs.flavor }}KeyPassword=${{ secrets.KEYSTORE_KEY_PASSWORD }}' >> $KEYSTORE_PROPERTIES_PATH
+
       - name: 📝 Edit pubspec version
+        # This step edits the version number in the pubspec.yaml file.
         run: |
           sed -Ei "s/^version: (.*)/version: ${{ inputs.new-pubspec-version }}/" app/pubspec.yaml
+
       - name: ⚙️ Setup Melos
+        # This step sets up Melos for the workflow.
         uses: bluefireteam/melos-action@v2
+
       - name: ⚙️ Install dependencies for all packages
+        # This step installs dependencies for all packages using Melos.
         run: melos build:pub_get:all
+
       - name: 🤖📦 Create Android ${{ inputs.short-environment-name }} appbundle release
+        # This step builds the Android appbundle release for the specified flavor.
         run: |
           pushd app
           mkdir debug-symbols
@@ -76,7 +93,9 @@ jobs:
             --flavor ${{ inputs.flavor }} \
             --target lib/main_${{ inputs.flavor }}.dart
           popd
+
       - name: 🤖🚀 Upload Android ${{ inputs.short-environment-name }} Release to Play Store
+        # This step uploads the Android appbundle release to the Play Store.
         uses: r0adkll/upload-google-play@v1.0.19
         with:
           packageName: ${{ inputs.package-name }}
@@ -84,7 +103,9 @@ jobs:
           status: ${{ inputs.release-status }}
           releaseFiles: ${{ github.workspace }}/app/build/app/outputs/bundle/${{ inputs.flavor }}Release/app-${{ inputs.flavor }}-release.aab
           serviceAccountJsonPlainText: "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_KEY_JSON }}"
+
       - name: 💬 Pick a random success catchphrase
+        # This step picks a random success catchphrase and stores it in the 'picked_sentence' variable.
         if: success()
         id: success_catchphrase
         run: |
@@ -93,7 +114,9 @@ jobs:
           randomNumber=$(($RANDOM%$arrayLength))
           pickedSentence=${sentences[$randomNumber]}
           echo "picked_sentence=$pickedSentence" >> $GITHUB_OUTPUT
+
       - name: 🔔✅ Send success notif to Discord
+        # This step sends a success notification to Discord with the randomly picked success catchphrase.
         if: success()
         uses: sarisia/actions-status-discord@v1
         with:
@@ -108,6 +131,8 @@ jobs:
           url: ${{ inputs.environment-url }}
           nofail: true
           nodetail: true
+        # This step sends a success notification to Discord with the information about the new version of the app.
+
       - name: 🔔❌ Send failure notif to Discord
         if: failure()
         uses: sarisia/actions-status-discord@v1
@@ -126,3 +151,4 @@ jobs:
           url: ${{ env.RUN_URL }}
           nofail: true
           nodetail: true
+        # This step sends a failure notification to Discord with the information about the failed release.

@@ -1,4 +1,4 @@
-name: 📦🚀 Build & deploy UAT release
+name: 📦🚀 Build & deploy UAT(User Acceptance Testing) release
 
 permissions: write-all
 
@@ -72,5 +72,4 @@ jobs:
   #     ios-environment-name: 'iOS UAT'
   #     ios-environment-url: 'https://appstoreconnect.apple.com/apps/1664853019/testflight'
   #     short-environment-name: 'UAT'
-  #     flavor: 'uat'
   #     new-pubspec-version: ${{ needs.gitRelease.outputs.new_pubspec_version }}
