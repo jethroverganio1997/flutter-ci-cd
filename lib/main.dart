@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         //
         // TRY THIS: Try runnination with "flutter run". You'll see
-        // the application haple toolbar. Then, without quitting the app,
+        // the application hapbar. Then, without quitting the app,
         // try changing the seedCo colorScheme below to Colors.green
         // and then invoke "hot reload" (save your changes or press the "hot
         // reload" button in a Fported IDE, or press "r" if you used
