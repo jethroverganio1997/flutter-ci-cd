@@ -59,6 +59,31 @@ jobs:
           message: "UAT release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
           github_token: ${{ secrets.RELEASE_AUTOMATION_PAT }}
 
+      - name: 📝 Conventional Changelog Action
+        uses: TriPSs/conventional-changelog-action@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get changelog for this release 
+        id: changelog 
+        run: | 
+          # Extract the changelog for the latest version from CHANGELOG.md 
+          VERSION_TAG="${{ github.ref }}" 
+          CHANGELOG=$(awk "/^## \[$VERSION_TAG\]/,/^## \[/" CHANGELOG.md | sed '$d') 
+          echo "$CHANGELOG" > RELEASE_CHANGELOG.md 
+          
+        - name: Create GitHub Release
+          uses: ncipollo/release-action@v1 
+          with: 
+            token: ${{ secrets.GITHUB_TOKEN }} 
+            name: Release${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+            tag: ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+            draft: false 
+            prerelease: false
+  
+  
+  
+  # deployUat:  
   # deployUat:
   #   name: Deploy UAT
   #   uses: ./.github/workflows/_deploy-env-apps.yml
