@@ -76,8 +76,8 @@ jobs:
         uses: ncipollo/release-action@v1 
         with: 
           token: ${{ secrets.GITHUB_TOKEN }} 
-          name: Release${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
-          tag: ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}
+          name: "v${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          skip-tag: true
           draft: false 
           prerelease: false
   
