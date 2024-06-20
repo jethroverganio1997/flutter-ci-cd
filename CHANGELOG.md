@@ -1,4 +1,18 @@
-# 1.0.0 (2024-06-20)
+# [1.1.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.0.0...v1.1.0) (2024-06-20)
+
+
+### Bug Fixes
+
+* resolve issue with user profile update ([aa7b8a1](https://github.com/jethroverganio1997/flutter-ci-cd/commit/aa7b8a1dc4a2e0d5817100fc826d9f9eda6e0fe2))
+
+
+### Features
+
+* **bene:** add user authentication ([bc2ee6e](https://github.com/jethroverganio1997/flutter-ci-cd/commit/bc2ee6e3fff02d89e5e41aa4b34d60336437057c))
+
+
+
+# [1.0.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/2251c243c38fe1b8c9e2e7b99dba3525dced4d2e...v1.0.0) (2024-06-20)
 
 
 ### Bug Fixes
