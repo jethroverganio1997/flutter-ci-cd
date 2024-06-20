@@ -56,9 +56,6 @@ jobs:
           github-token: ${{ secrets.RELEASE_AUTOMATION_PAT }}
           tag-prefix: 'release/uat/'
           skip-commit: true
-          skip-bump: true
-          fallback-version: '0.0.1'
-          version-file: './pubspec.yaml'
 
       - name: 📝 Calculate complete UAT version for next version
         id: get_new_pubspec_version
