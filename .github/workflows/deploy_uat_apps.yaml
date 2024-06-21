@@ -44,7 +44,7 @@ jobs:
         id: semantic_release_info
         uses: cycjimmy/semantic-release-action@v4.1.0
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_AUTOMATION_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           semantic_version: 19
 
