@@ -2,14 +2,15 @@
     "branches": [
       "main"
     ],
-    "tagFormat": "release/uat/${version}",
+    "tagFormat": "v${version}",
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         [
             "@semantic-release/changelog",
             {
-                "changelogFile": "CHANGELOG.md"
+                "changelogFile": "CHANGELOG.md",
+                "changelogTitle": "# CHANGELOG"
             }
         ],
         [
