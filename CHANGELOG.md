@@ -1,5 +1,13 @@
 # CHANGELOG
 
+# [1.2.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.1.0...v1.2.0) (2024-06-21)
+
+
+### Features
+
+* **bene:** add shit ([ece7524](https://github.com/jethroverganio1997/flutter-ci-cd/commit/ece752438d37fd3aa0c458b27e5f51dd0009872d))
+* shit deep ([7ab3dc3](https://github.com/jethroverganio1997/flutter-ci-cd/commit/7ab3dc3d161c1c58319aedb9b30a635f97e0f434))
+
 # [1.1.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.0.0...v1.1.0) (2024-06-21)
 
 
