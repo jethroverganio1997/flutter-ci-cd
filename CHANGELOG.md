@@ -1,5 +1,12 @@
 # CHANGELOG
 
+# [1.4.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.3.1...v1.4.0) (2024-06-21)
+
+
+### Features
+
+* new workflow ([164a323](https://github.com/jethroverganio1997/flutter-ci-cd/commit/164a323849c0efef9a8c87fec53d14f6a8969094))
+
 ## [1.3.1](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.3.0...v1.3.1) (2024-06-21)
 
 
