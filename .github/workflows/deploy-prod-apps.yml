@@ -21,12 +21,11 @@ jobs:
         with:
           fetch-depth: 0
      
-    #  i base my prod version to uat version because of version number 
-      - name: 🏷️🧪 Get latest UAT release
-        id: get_latest_uat_release
+      - name: 🏷️🧪 Get latest Prod release
+        id: get_latest_prod_release
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
-          prefix: "release/uat/"
+          prefix: "release/prod/"
           fallback: 0.0.1
 
       - name: ⚙️ Prepare semantic release configuration
@@ -47,8 +46,8 @@ jobs:
       - name: 📝 Edit pubspec version
         id: get_new_pubspec_version
         run: |
-          last_uat_release=$(echo "${{ steps.get_latest_uat_release.outputs.tag }}" | sed -E "s/release\/uat\/(.*)/\1/")
-          next_pubspec_version=$(./scripts/semver.sh "$last_uat_release" "${{ steps.semantic_release_info.outputs.new_release_version }}")
+          last_prod_release=$(echo "${{ steps.get_latest_prod_release.outputs.tag }}" | sed -E "s/release\/prod\/(.*)/\1/")
+          next_pubspec_version=$(./scripts/semver.sh "$last_prod_release" "${{ steps.semantic_release_info.outputs.new_release_version }}")
 
           echo "pubspec.yaml before update:"
           cat pubspec.yaml
@@ -65,12 +64,12 @@ jobs:
         with:
           commit_message: "chore(*): bump to version ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }} [skip ci]"
      
-      # - name: 🏷️✍️ Create new Prod release tag
-      #   uses: rickstaa/action-create-tag@v1
-      #   with:
-      #     tag: "v${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-      #     message: "production release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-      #     github_token: ${{ secrets.RELEASE_AUTOMATOR_PAT }}
+      - name: 🏷️✍️ Create new Prod release tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "release/prod/${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          message: "PROD release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          github_token: ${{ secrets.RELEASE_AUTOMATOR_PAT }}
 
   # deployProd:
   #   name: Deploy Prod
