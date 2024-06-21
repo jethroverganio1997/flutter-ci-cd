@@ -28,7 +28,6 @@ jobs:
           prefix: "release/prod/"
           fallback: 0.0.1
      
-     
       - name: 🏷️✍️ Create new Prod release tag
         id: semantic_release_info
         uses: cycjimmy/semantic-release-action@v4.1.0
@@ -49,7 +48,7 @@ jobs:
           echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
           
       - name: 🔀 Push bump commit with changelog to repository
-        uses: stefanzweifel/git-auto-commit-action@v4.16.0
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
         with:
           commit_message: "chore(*): bump to version ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }} [skip ci]"
      
