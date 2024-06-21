@@ -51,12 +51,12 @@ jobs:
           sed -Ei "s/^version: (.*)/version: $next_pubspec_version/" pubspec.yaml
           echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
   
-      - name: 🏷️✍️ Create new Prod release tag
-        uses: rickstaa/action-create-tag@v1
-        with:
-          tag: "v${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-          message: "production release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-          github_token: ${{ secrets.RELEASE_AUTOMATOR_PAT }}
+      # - name: 🏷️✍️ Create new Prod release tag
+      #   uses: rickstaa/action-create-tag@v1
+      #   with:
+      #     tag: "v${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+      #     message: "production release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+      #     github_token: ${{ secrets.RELEASE_AUTOMATOR_PAT }}
 
   # deployProd:
   #   name: Deploy Prod
