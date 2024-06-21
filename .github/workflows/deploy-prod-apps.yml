@@ -40,17 +40,30 @@ jobs:
         with:
           semantic_version: 19  
 
-      # - name: 📝 Make semver.sh executable
-      #   run: chmod +x ./scripts/semver.sh
+      - name: 📝 Make semver.sh executable
+        run: chmod +x ./scripts/semver.sh
      
-      # - name: 📝 Edit pubspec version
-      #   id: get_new_pubspec_version
-      #   run: |
-      #     last_prod_release=$(echo "${{ steps.get_latest_prod_release.outputs.tag }}" | sed -E "s/release\/prod\/(.*)/\1/")
-      #     next_pubspec_version=$(./scripts/semver.sh "$last_prod_release" "${{ steps.semantic_release_info.outputs.new_release_version }}")
-      #     sed -Ei "s/^version: (.*)/version: $next_pubspec_version/" pubspec.yaml
-      #     echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
-  
+      - name: 📝 Edit pubspec version
+        id: get_new_pubspec_version
+        run: |
+          last_prod_release=$(echo "${{ steps.get_latest_prod_release.outputs.tag }}" | sed -E "s/release\/prod\/(.*)/\1/")
+          next_pubspec_version=$(./scripts/semver.sh "$last_prod_release" "${{ steps.semantic_release_info.outputs.new_release_version }}")
+          
+          echo "pubspec.yaml before update:"
+          cat pubspec.yaml
+          
+          sed -i.bak -E "s/^version: .*/version: $next_pubspec_version/" pubspec.yaml
+          
+          echo "pubspec.yaml after update:"
+          cat pubspec.yaml
+
+          echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
+
+      - name: 🔀 Push bump commit with changelog to repository
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: "chore(*): bump to version ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }} [skip ci]"
+     
       # - name: 🏷️✍️ Create new Prod release tag
       #   uses: rickstaa/action-create-tag@v1
       #   with:
