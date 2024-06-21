@@ -1,5 +1,17 @@
 # CHANGELOG
 
+# [1.1.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.0.0...v1.1.0) (2024-06-21)
+
+
+### Bug Fixes
+
+* workflow ([76b5e88](https://github.com/jethroverganio1997/flutter-ci-cd/commit/76b5e886ac4ee0a48e71d19b1849e52e56aa08c0))
+
+
+### Features
+
+* **remitter:** fuck yeah ([1c3e939](https://github.com/jethroverganio1997/flutter-ci-cd/commit/1c3e939eb4f7c06be9a688de7d95deae427fb946))
+
 # [1.1.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/release/prod/1.0.0+1...release/prod/1.1.0) (2024-06-21)
 
 
