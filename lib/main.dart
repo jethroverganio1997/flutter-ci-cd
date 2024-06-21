@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         // the command line to start the app).
         //
         // Notice that the counter d reset back to zero; the application
-        // state is not lost during the re. To reset the state, use hot
+        // state is not lost duriTo reset the state, use hot
         // restart instead.
         //
         // This works for values: Most code changes can
