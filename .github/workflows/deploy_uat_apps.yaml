@@ -36,9 +36,9 @@ jobs:
           prefix: "release/uat/"
           fallback: 0.0.1
 
-      # - name: ⚙️ Prepare semantic release configuration
-      #   run: |
-      #     mv .releaserc.uat.json .releaserc.json
+      - name: ⚙️ Prepare semantic release configuration
+        run: |
+          cp .releaserc.uat.json .releaserc.json
 
       - name: 🏷️🔮 Get next UAT release semver version
         id: semantic_release_info
@@ -50,14 +50,6 @@ jobs:
 
       - name: 📝 Make semver.sh executable
         run: chmod +x ./scripts/semver.sh
-
-      # - name: 📝 Conventional Changelog Action
-      #   id: changelog
-      #   uses: TriPSs/conventional-changelog-action@v5
-      #   with:
-      #     github-token: ${{ secrets.RELEASE_AUTOMATION_PAT }}
-      #     tag-prefix: 'release/uat/'
-      #     skip-commit: true
 
       - name: 📝 Calculate complete UAT version for next version
         id: get_new_pubspec_version

@@ -25,15 +25,21 @@ jobs:
         id: get_latest_prod_release
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
-          prefix: "release/prod/"
+          prefix: "v"
           fallback: 0.0.1
-     
+
+      - name: ⚙️ Prepare semantic release configuration
+        run: |
+          cp .releaserc.prod.json .releaserc.json
+
       - name: 🏷️✍️ Create new Prod release tag
         id: semantic_release_info
         uses: cycjimmy/semantic-release-action@v4.1.0
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_AUTOMATION_PAT }}
-      
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          semantic_version: 19  
+
       - name: 📝 Make semver.sh executable
         run: chmod +x ./scripts/semver.sh
      
@@ -44,17 +50,12 @@ jobs:
           next_pubspec_version=$(./scripts/semver.sh "$last_prod_release" "${{ steps.semantic_release_info.outputs.new_release_version }}")
           sed -Ei "s/^version: (.*)/version: $next_pubspec_version/" pubspec.yaml
           echo "next_pubspec_version=$next_pubspec_version" >> $GITHUB_OUTPUT
-          
-      - name: 🔀 Push bump commit with changelog to repository
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
-        with:
-          commit_message: "chore(*): bump to version ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }} [skip ci]"
-     
+  
       - name: 🏷️✍️ Create new Prod release tag
         uses: rickstaa/action-create-tag@v1
         with:
-          tag: "release/prod/${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
-          message: "UAT release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          tag: "v${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
+          message: "production release ${{ steps.get_new_pubspec_version.outputs.next_pubspec_version }}"
           github_token: ${{ secrets.RELEASE_AUTOMATOR_PAT }}
 
   # deployProd:
