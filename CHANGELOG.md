@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.2.1](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.2.0...v1.2.1) (2024-06-21)
+
+
+### Bug Fixes
+
+* deep shit ([b59b4a4](https://github.com/jethroverganio1997/flutter-ci-cd/commit/b59b4a4fe60f60e11eb4bdad51a6e309855402ca))
+
 # [1.2.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.1.0...v1.2.0) (2024-06-21)
 
 
