@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [1.3.1](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.3.0...v1.3.1) (2024-06-21)
+
+
+### Bug Fixes
+
+* workflow ([d310143](https://github.com/jethroverganio1997/flutter-ci-cd/commit/d310143777def653b8fe1b739f35d877f8979d4d))
+
 # [1.3.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.2.1...v1.3.0) (2024-06-21)
 
 
