@@ -33,8 +33,6 @@ jobs:
         uses: cycjimmy/semantic-release-action@v4.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_AUTOMATION_PAT }}
-        with:
-          semantic_version: 19
       
       - name: 📝 Make semver.sh executable
         run: chmod +x ./scripts/semver.sh
