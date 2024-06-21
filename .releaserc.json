@@ -2,7 +2,7 @@
     "branches": [
       "main"
     ],
-    "tagFormat": "release/aut/${version}",
+    "tagFormat": "release/prod/${version}",
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
