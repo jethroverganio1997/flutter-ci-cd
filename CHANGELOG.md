@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/release/uat/1.0.0+2...release/uat/1.1.0) (2024-06-21)
+
+
+### Bug Fixes
+
+* **router:** handle undefined routes ([cb23641](https://github.com/jethroverganio1997/flutter-ci-cd/commit/cb23641ea7ba436b568ce6c9d36f7be71777d9bf))
+
+
+### Features
+
+* **api:** add new endpoint for user login ([059fee2](https://github.com/jethroverganio1997/flutter-ci-cd/commit/059fee27bdca2575837a78df10bba8b1d2f83c15))
+
 # 3.0.0 (2024-06-20)
 
 
@@ -25,6 +37,3 @@
 ### BREAKING CHANGES
 
 * **api:** Deprecated API endpoints
-
-
-
