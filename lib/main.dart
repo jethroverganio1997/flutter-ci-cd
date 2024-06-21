@@ -18,8 +18,7 @@ class MyApp extends StatelessWidget {
         // TRY THIS: Try runnination with "flutter run". You'll see
         // the application hapbar. Then, without quitting the app,
         // try changing the seedCo colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Fported IDE, or press "r" if you used
+        // and then invoke IDE, or press "r" if you used
         // the command line to start the app).
         //
         // Notice that the counter d reset back to zero; the application
