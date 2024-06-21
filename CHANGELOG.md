@@ -1,5 +1,17 @@
 # CHANGELOG
 
+# [1.3.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.2.1...v1.3.0) (2024-06-21)
+
+
+### Bug Fixes
+
+* ci ([78383b6](https://github.com/jethroverganio1997/flutter-ci-cd/commit/78383b63009de6c296295dc2e50159d5f488b899))
+
+
+### Features
+
+* main modified ([fc07009](https://github.com/jethroverganio1997/flutter-ci-cd/commit/fc0700994513b472c64ca0ebdbc39769ab9d6d9c))
+
 ## [1.2.1](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.2.0...v1.2.1) (2024-06-21)
 
 
