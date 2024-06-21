@@ -1,5 +1,17 @@
 # CHANGELOG
 
+# [1.5.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.4.0...v1.5.0) (2024-06-21)
+
+
+### Bug Fixes
+
+* fuck fuck fuck ([cafafce](https://github.com/jethroverganio1997/flutter-ci-cd/commit/cafafce437ae718a0ee8436719dfff00c8afeed4))
+
+
+### Features
+
+* **auth:** add login ([4cc0c75](https://github.com/jethroverganio1997/flutter-ci-cd/commit/4cc0c7577db4cb160b32f3669ab7a74d8254f389))
+
 # [1.4.0](https://github.com/jethroverganio1997/flutter-ci-cd/compare/v1.3.1...v1.4.0) (2024-06-21)
 
 
