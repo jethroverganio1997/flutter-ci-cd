@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
+        // This is the theapplication.
         //
         // TRY THIS: Try runnination with "flutter run". You'll see
         // the application ha. Then, without quitting the app,
