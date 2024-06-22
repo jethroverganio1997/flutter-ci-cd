@@ -5,21 +5,29 @@ permissions: write-all
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
   cancel-in-progress: true
-
 on:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - ready_for_review
-    branches:
-      - 'main'
-    paths-ignore:
-      - '**.md'
-      - 'doc/**'
-      - '.git/'
-      - '.vscode/'
+    push:
+      branches:
+        - 'main'
+      paths-ignore:
+        - '**.md'
+        - 'doc/**'
+        - '.git/'
+        - '.vscode/'
+# on:
+#   pull_request:
+#     types:
+#       - opened
+#       - reopened
+#       - synchronize
+#       - ready_for_review
+#     branches:
+#       - 'main'
+#     paths-ignore:
+#       - '**.md'
+#       - 'doc/**'
+#       - '.git/'
+#       - '.vscode/'
 
 jobs:
   testAndCoverage:
@@ -36,6 +44,7 @@ jobs:
     steps:
       - name: ⬇️ Checkout repository
         uses: actions/checkout@v4
+
       - name: ⚙️ Setup Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -44,6 +53,7 @@ jobs:
       - run: |
           flutter pub get
           flutter pub run build_runner build --delete-conflicting-outputs
+
       - name: ⚠️ℹ️ Run Dart analysis for app package
         uses: zgosalvez/github-actions-analyze-dart@v3.0.3
         with:
@@ -77,4 +87,4 @@ jobs:
           flutter pub run build_runner build --delete-conflicting-outputs
       - name: 🤖🔨 Build Android app
         run: |
-          flutter build appbundle -t lib/main.dart
+          flutter build appbundle --flavor google -t lib/main.dart

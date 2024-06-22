@@ -1,16 +1,16 @@
 name: 📦🚀 Build & deploy UAT(User Acceptance Testing) release
 
 permissions: write-all
-
-on:
-  push:
-    branches:
-      - 'main'
-    paths-ignore:
-      - '**.md'
-      - 'doc/**'
-      - '.git/'
-      - '.vscode/'
+on: workflow_dispatch
+# on:
+#   push:
+#     branches:
+#       - 'main'
+#     paths-ignore:
+#       - '**.md'
+#       - 'doc/**'
+#       - '.git/'
+#       - '.vscode/'
 
 jobs:
   # testAndCoverage:
